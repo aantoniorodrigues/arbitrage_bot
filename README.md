@@ -1,4 +1,4 @@
-# arbritage_bot
+# arbitrage_bot
 
 Points to consider:
 
