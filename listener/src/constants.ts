@@ -19,6 +19,12 @@ export const TOKENS = {
     testnet: "",
     decimals: 6,
   },
+  DAI: {
+    name: "DAI",
+    mainnet: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+    testnet: "",
+    decimals: 18,
+  },
   BNB: {
     name: "BNB",
     mainnet: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
