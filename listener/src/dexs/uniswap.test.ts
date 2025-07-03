@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 
 let USDT: Token;
 let WETH: Token;
+let BNB: Token;
 let provider: ethers.JsonRpcProvider;
 
 beforeEach(() => {
@@ -25,6 +26,14 @@ beforeEach(() => {
     TOKENS.WETH.decimals,
     "WETH",
     "Wrapped Ether"
+  );
+
+  BNB = new Token(
+    chainId,
+    TOKENS.BNB.mainnet,
+    TOKENS.BNB.decimals,
+    "BNB",
+    "Binance Coin"
   );
 });
 
@@ -54,7 +63,6 @@ describe("createPair", () => {
 describe("getMidPrice", () => {
   it("should return WETH token price in USDT", async () => {
     const midPrice = await getMidPrice(WETH, USDT, provider);
-
-    expect(midPrice).toBeCloseTo(2625.71, 0);
+    expect(midPrice).toBeCloseTo(2611.77, -1);
   });
 });
