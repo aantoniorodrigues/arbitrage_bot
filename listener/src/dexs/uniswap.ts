@@ -1,6 +1,5 @@
-import { TOKENS } from "../constants";
-import { ChainId, Token, CurrencyAmount } from "@uniswap/sdk-core";
-import { Pair } from "@uniswap/v2-sdk";
+import { Token, CurrencyAmount } from "@uniswap/sdk-core";
+import { Pair, Route } from "@uniswap/v2-sdk";
 import { ethers } from "ethers";
 import uniswapV2poolABI from "@uniswap/v2-core/build/UniswapV2Pair.json";
 
@@ -25,7 +24,7 @@ export async function createPair(
     : [tokens[1], tokens[0]];
 
   const reservesSorted = token0.sortsBefore(token1)
-    ? [reserve0, reserve1]
+    ? reserves
     : [reserve1, reserve0];
 
   const pair = new Pair(
@@ -34,4 +33,15 @@ export async function createPair(
   );
 
   return pair;
+}
+
+export async function getMidPrice(
+  token0: Token,
+  token1: Token,
+  provider: ethers.JsonRpcProvider
+): Promise<number> {
+  const pair = await createPair(token0, token1, provider);
+  const route = new Route([pair], token0, token1);
+
+  return Number(route.midPrice.toSignificant(6));
 }
