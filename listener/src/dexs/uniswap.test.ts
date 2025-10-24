@@ -1,6 +1,6 @@
 import { TOKENS } from "../constants";
 import { ChainId, Token } from "@uniswap/sdk-core";
-import { createPair, getMidPrice } from "./uniswap";
+import { createPair, getMidPrice, getExecutionPrice } from "./uniswap";
 import { ethers } from "ethers";
 
 let USDT: Token;
@@ -63,6 +63,13 @@ describe("createPair", () => {
 describe("getMidPrice", () => {
   it("should return WETH token price in USDT", async () => {
     const midPrice = await getMidPrice(WETH, USDT, provider);
-    expect(midPrice).toBeCloseTo(2611.77, -1);
+    expect(midPrice).toBeCloseTo(3791.65, -1);
+  });
+});
+
+describe("getExecutionPrice", () => {
+  it("should return execution price of WETH token in USDT", async () => {
+    const executionPrice = await getExecutionPrice(WETH, USDT, provider, 1);
+    expect(executionPrice).toBeCloseTo(3782.01, -1);
   });
 });
