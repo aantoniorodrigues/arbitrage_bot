@@ -1,5 +1,5 @@
-import { Token, CurrencyAmount } from "@uniswap/sdk-core";
-import { Pair, Route } from "@uniswap/v2-sdk";
+import { Token, CurrencyAmount, WETH9, ChainId, TradeType } from "@uniswap/sdk-core";
+import { Pair, Route, Trade } from "@uniswap/v2-sdk";
 import { ethers } from "ethers";
 import uniswapV2poolABI from "@uniswap/v2-core/build/UniswapV2Pair.json";
 
@@ -36,12 +36,26 @@ export async function createPair(
 }
 
 export async function getMidPrice(
-  token0: Token,
-  token1: Token,
+  inputToken: Token,
+  outputToken: Token,
   provider: ethers.JsonRpcProvider
 ): Promise<number> {
-  const pair = await createPair(token0, token1, provider);
-  const route = new Route([pair], token0, token1);
+  const pair = await createPair(inputToken, outputToken, provider);
+  const route = new Route([pair], inputToken, outputToken);
 
   return Number(route.midPrice.toSignificant(6));
+}
+
+export async function getExecutionPrice(
+  inputToken: Token,
+  outputToken: Token,
+  provider: ethers.JsonRpcProvider,
+  inputTokenAmount: number
+) {
+const pair = await createPair(inputToken, outputToken, provider)
+const route = new Route([pair], inputToken, outputToken);
+const amountWithDecimals = inputTokenAmount * 10 ** inputToken.decimals;
+const trade = new Trade(route, CurrencyAmount.fromRawAmount(inputToken, amountWithDecimals), TradeType.EXACT_INPUT);
+
+return Number(trade.executionPrice.toSignificant(6));
 }
