@@ -1,6 +1,6 @@
 import { TOKENS } from "../../constants";
 import { ChainId, Token } from "@uniswap/sdk-core";
-import { createPair } from "./sushiswap";
+import { createPair, getMidPrice } from "./sushiswap";
 import { ethers } from "ethers";
 
 let USDT: Token;
@@ -50,8 +50,6 @@ describe("createPair", () => {
 
     const token0 = tokenAmount0["currency"];
     const token1 = tokenAmount1["currency"];
-    console.log("token0", token0);
-    console.log("token1", token1);
 
     expect(token0["symbol"]).toBe("WETH");
     expect(token0["decimals"]).toBe(18);
@@ -64,13 +62,10 @@ describe("createPair", () => {
 
   it("should create WETH/BNB pair with the correct token info", async () => {
     const pair = await createPair(WETH, BNB, provider);
-    console.log("tokenAmounts", pair["tokenAmounts"]);
     const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
     const token0 = tokenAmount0["currency"];
     const token1 = tokenAmount1["currency"];
-    console.log("token0", token0);
-    console.log("token1", token1);
 
     expect(token0["symbol"]).toBe("BNB");
     expect(token0["decimals"]).toBe(18);
@@ -78,5 +73,12 @@ describe("createPair", () => {
     expect(token1["symbol"]).toBe("WETH");
     expect(token1["decimals"]).toBe(18);
     expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
+  });
+});
+
+describe("getMidPrice", () => {
+  it("should return WETH token price in USDT", async () => {
+    const midPrice = await getMidPrice(WETH, USDT, provider);
+    expect(midPrice).toBeCloseTo(3777.25, -1);
   });
 });
