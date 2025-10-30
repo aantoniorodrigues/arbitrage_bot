@@ -59,7 +59,6 @@ describe("createPair", () => {
     expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
   });
 
-
   it("should create WETH/BNB pair with the correct token info", async () => {
     const pair = await createPair(WETH, BNB, provider);
     const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
