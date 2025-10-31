@@ -44,7 +44,7 @@ describe("createPair", () => {
     expect(pair).toBeDefined();
   });
 
-  it("should create a pair with the correct token info", async () => {
+  it("should create WETH/USDT pair with the correct pair info", async () => {
     const pair = await createPair(WETH, USDT, provider);
     const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
@@ -57,6 +57,21 @@ describe("createPair", () => {
     expect(token1["symbol"]).toBe("USDT");
     expect(token1["decimals"]).toBe(6);
     expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
+  });
+
+  it("should create WETH/BNB pair with the correct pair info", async () => {
+    const pair = await createPair(WETH, BNB, provider);
+    const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
+
+    const token0 = tokenAmount0["currency"];
+    const token1 = tokenAmount1["currency"];
+
+    expect(token0["symbol"]).toBe("BNB");
+    expect(token0["decimals"]).toBe(18);
+    expect(token0["address"]).toBe(TOKENS.BNB.mainnet);
+    expect(token1["symbol"]).toBe("WETH");
+    expect(token1["decimals"]).toBe(18);
+    expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
   });
 });
 

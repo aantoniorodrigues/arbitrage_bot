@@ -1,5 +1,5 @@
 import { Token, CurrencyAmount, TradeType } from "@uniswap/sdk-core";
-import { Pair } from "@uniswap/v2-sdk";
+import { Pair, Route } from "@uniswap/v2-sdk";
 import { ethers } from "ethers";
 import { ABI } from "./abi";
 
@@ -19,7 +19,7 @@ export async function createPair(
     provider
   );
 
-  const reserves = await pairContract.getReserves();
+  const reserves = await pairContract["getReserves"]();
   const [reserve0, reserve1] = reserves;
 
   const tokens = [token0, token1];
@@ -37,6 +37,17 @@ export async function createPair(
   );
 
   return pair;
+}
+
+export async function getMidPrice(
+  inputToken: Token,
+  outputToken: Token,
+  provider: ethers.JsonRpcProvider
+): Promise<number> {
+  const pair = await createPair(inputToken, outputToken, provider);
+  const route = new Route([pair], inputToken, outputToken);
+
+  return Number(route.midPrice.toSignificant(6));
 }
 
 function getPairAddress(tokenA: Token, tokenB: Token): string {
