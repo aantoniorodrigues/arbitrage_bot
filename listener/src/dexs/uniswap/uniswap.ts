@@ -51,11 +51,16 @@ export async function getExecutionPrice(
   outputToken: Token,
   provider: ethers.JsonRpcProvider,
   inputTokenAmount: number
-) {
+): Promise<number> {
 const pair = await createPair(inputToken, outputToken, provider)
 const route = new Route([pair], inputToken, outputToken);
 const amountWithDecimals = inputTokenAmount * 10 ** inputToken.decimals;
-const trade = new Trade(route, CurrencyAmount.fromRawAmount(inputToken, amountWithDecimals), TradeType.EXACT_INPUT);
+
+const trade = new Trade(
+  route,
+  CurrencyAmount.fromRawAmount(inputToken, amountWithDecimals),
+  TradeType.EXACT_INPUT
+);
 
 return Number(trade.executionPrice.toSignificant(6));
 }
