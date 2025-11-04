@@ -83,7 +83,7 @@ describe("getMidPrice", () => {
 });
 
 describe("getExecutionPrice", () => {
-  it("should return execution price of WETH token in USDT", async () => {
+  it("should return execution price of 1 WETH token in USDT", async () => {
     const executionPrice = await getExecutionPrice(WETH, USDT, provider, 1);
     expect(executionPrice).toBeCloseTo(3782.01, -1);
   });
