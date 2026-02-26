@@ -11,3 +11,10 @@ export interface PriceDifference {
   percentageDifference: number;
   timestamp: number;
 }
+
+export interface Dex {
+  name: string;
+  abi: string[];
+  factoryAddress: string;
+  initCodeHash: string;
+}
