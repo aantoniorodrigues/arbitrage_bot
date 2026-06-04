@@ -5,6 +5,9 @@ import { ethers } from "ethers";
 import { Uniswap } from "./uniswap/uniswap";
 import { Sushiswap } from "./sushiswap/sushiswap";
 
+import nock from "nock";
+import { defaultOptions } from "../services/vcr";
+
 let USDT: Token;
 let WETH: Token;
 let BNB: Token;
@@ -12,7 +15,9 @@ let provider: ethers.JsonRpcProvider;
 
 beforeEach(() => {
   const chainId = ChainId.MAINNET;
-  provider = new ethers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL);
+  provider = new ethers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL, "", {
+    batchMaxCount: 1,
+  });
 
   USDT = new Token(
     chainId,
@@ -115,18 +120,42 @@ describe("createPair", () => {
 
 describe("getMidPrice", () => {
   it("should return WETH token price in USDT on Uniswap", async () => {
+    nock.back.setMode("record");
+    const { nockDone } = await nock.back(
+      "mid-price-uni-WETH-USDC.json",
+      defaultOptions,
+    );
+
     const midPrice = await getMidPrice(WETH, USDT, provider, new Uniswap());
-    expect(midPrice).toBeCloseTo(1832.64, -1);
+    expect(midPrice).toBe(2117.43);
+
+    nockDone();
+    nock.back.setMode("wild");
   });
 
   it("should return WETH token price in USDT on Sushiswap", async () => {
+    nock.back.setMode("record");
+    const { nockDone } = await nock.back(
+      "mid-price-sushi-WETH-USDC.json",
+      defaultOptions,
+    );
+
     const midPrice = await getMidPrice(WETH, USDT, provider, new Sushiswap());
-    expect(midPrice).toBeCloseTo(1832.64, -1);
+    expect(midPrice).toBe(2118.7);
+
+    nockDone();
+    nock.back.setMode("wild");
   });
 });
 
 describe("getExecutionPrice", () => {
   it("should return execution price of 1 WETH token in USDT on Uniswap", async () => {
+    nock.back.setMode("record");
+    const { nockDone } = await nock.back(
+      "execution-price-uni-WETH-USDT.json",
+      defaultOptions,
+    );
+
     const executionPrice = await getExecutionPrice(
       WETH,
       USDT,
@@ -134,10 +163,20 @@ describe("getExecutionPrice", () => {
       1,
       new Uniswap(),
     );
-    expect(executionPrice).toBeCloseTo(1824.55, -1);
+
+    expect(executionPrice).toBe(2110.55);
+
+    nockDone();
+    nock.back.setMode("wild");
   });
 
   it("should return execution price of 1 WETH token in USDT on Sushiswap", async () => {
+    nock.back.setMode("record");
+    const { nockDone } = await nock.back(
+      "execution-price-sushi-WETH-USDT.json",
+      defaultOptions,
+    );
+
     const executionPrice = await getExecutionPrice(
       WETH,
       USDT,
@@ -145,6 +184,10 @@ describe("getExecutionPrice", () => {
       1,
       new Sushiswap(),
     );
-    expect(executionPrice).toBeCloseTo(1824.55, -1);
+
+    expect(executionPrice).toBe(2096.93);
+
+    nockDone();
+    nock.back.setMode("wild");
   });
 });

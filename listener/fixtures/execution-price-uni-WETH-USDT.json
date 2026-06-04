@@ -1,0 +1,61 @@
+[
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/bfbb56539cf443dfbfd479d0bc390eaf",
+        "body": {
+            "method": "eth_chainId",
+            "params": [],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": "0x1"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "39",
+            "content-type": "application/json",
+            "date": "Thu, 21 May 2026 10:48:33 GMT",
+            "vary": "Accept-Encoding"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/bfbb56539cf443dfbfd479d0bc390eaf",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "result": "0x0000000000000000000000000000000000000000000000c743d03ddbc2d322fa000000000000000000000000000000000000000000000000000007143629b719000000000000000000000000000000000000000000000000000000006a0ee273"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Thu, 21 May 2026 10:48:33 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.51.0 (2026-05-20T02:12:30Z)",
+            "x-info-node": "(a91f6d75-99a2-4a2a-9b4e-a0be910ed8c2 - blb-v2-ethereum-mainnet-698d9bd55b-9cgvt)",
+            "x-trace-id": "622fcb33073747bdd218d20e2b6a8815"
+        },
+        "responseIsBinary": false
+    }
+]
