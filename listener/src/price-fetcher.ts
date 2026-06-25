@@ -1,7 +1,7 @@
 import { Token, CurrencyAmount, TradeType } from "@uniswap/sdk-core";
 import { Pair, Route, Trade } from "@uniswap/v2-sdk";
 import { ethers } from "ethers";
-import { Dex } from "../interfaces/types";
+import { Dex } from "./interfaces/types";
 
 export async function createPair(
   token0: Token,

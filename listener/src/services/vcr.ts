@@ -24,7 +24,7 @@ function sanitizeScope(scope: any) {
   return scope;
 }
 
-export const defaultOptions = {
+const defaultOptions = {
   before: (scope: any) => {
     scope.filteringRequestBody = (body: string) => stripId(body);
     if (scope.rawHeaders) {
@@ -33,3 +33,17 @@ export const defaultOptions = {
   },
   afterRecord: (outputs: any[]) => outputs.map(sanitizeScope),
 };
+
+export async function withFixture<T>(
+  fixtureName: string,
+  fn: () => Promise<T>,
+): Promise<T> {
+  nock.back.setMode("record");
+  const { nockDone } = await nock.back(fixtureName, defaultOptions);
+  try {
+    return await fn();
+  } finally {
+    nockDone();
+    nock.back.setMode("wild");
+  }
+}
