@@ -13,9 +13,13 @@ let provider: ethers.JsonRpcProvider;
 
 beforeEach(() => {
   const chainId = ChainId.MAINNET;
-  provider = new ethers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL, "", {
-    batchMaxCount: 1,
-  });
+  provider = new ethers.JsonRpcProvider(
+    process.env.ETHEREUM_RPC_URL || "https://mainnet.infura.io:443/v3/REDACTED",
+    "",
+    {
+      batchMaxCount: 1,
+    },
+  );
 
   USDT = new Token(
     chainId,
@@ -130,14 +134,14 @@ describe("getMidPrice", () => {
   it("should return WETH token price in USDT on Uniswap", async () => {
     await withFixture("mid-price-uni-WETH-USDC.json", async () => {
       const midPrice = await getMidPrice(WETH, USDT, provider, new Uniswap());
-      expect(midPrice).toBe(2585.15);
+      expect(midPrice).toBe(2582.21);
     });
   });
 
   it("should return WETH token price in USDT on Sushiswap", async () => {
     await withFixture("mid-price-sushi-WETH-USDC.json", async () => {
       const midPrice = await getMidPrice(WETH, USDT, provider, new Sushiswap());
-      expect(midPrice).toBe(2585.32);
+      expect(midPrice).toBe(2584.3);
     });
   });
 });
@@ -153,7 +157,7 @@ describe("getExecutionPrice", () => {
         new Uniswap(),
       );
 
-      expect(executionPrice).toBe(2576.5);
+      expect(executionPrice).toBe(2573.58);
     });
   });
 
@@ -167,7 +171,7 @@ describe("getExecutionPrice", () => {
         new Sushiswap(),
       );
 
-      expect(executionPrice).toBe(2556.81);
+      expect(executionPrice).toBe(2555.81);
     });
   });
 });

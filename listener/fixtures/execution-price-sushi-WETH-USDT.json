@@ -19,7 +19,7 @@
             "connection": "close",
             "content-length": "39",
             "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 10:28:29 GMT",
+            "date": "Wed, 07 Oct 2026 11:19:09 GMT",
             "vary": "Accept-Encoding"
         },
         "responseIsBinary": false
@@ -43,18 +43,18 @@
         "response": {
             "jsonrpc": "2.0",
             "id": 2,
-            "result": "0x000000000000000000000000000000000000000000000006a8ba51b0cede4c2900000000000000000000000000000000000000000000000000000049f1162a8b000000000000000000000000000000000000000000000000000000006ac619f3"
+            "result": "0x000000000000000000000000000000000000000000000006a910f377a674beda00000000000000000000000000000000000000000000000000000049ed579b9f000000000000000000000000000000000000000000000000000000006ac62977"
         },
         "rawHeaders": {
             "access-control-allow-origin": "*",
             "connection": "close",
             "content-length": "230",
             "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 10:28:29 GMT",
+            "date": "Wed, 07 Oct 2026 11:19:09 GMT",
             "vary": "Origin",
             "x-info-build": "3.72.0 (2026-09-21T22:45:24Z)",
             "x-info-node": "(4bcd626c-be36-43ac-9d4a-52590704b278 - blb-v2-ethereum-mainnet-778dd5f6cf-tp82q)",
-            "x-trace-id": "8d24294b2185afbbef64091639418d3a"
+            "x-trace-id": "7081179ffa08ae2147ec1d30b5a7f657"
         },
         "responseIsBinary": false
     }

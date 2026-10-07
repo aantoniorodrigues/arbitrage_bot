@@ -4,31 +4,6 @@
         "method": "POST",
         "path": "/v3/REDACTED",
         "body": {
-            "method": "eth_chainId",
-            "params": [],
-            "jsonrpc": "2.0"
-        },
-        "status": 200,
-        "response": {
-            "jsonrpc": "2.0",
-            "id": 1,
-            "result": "0x1"
-        },
-        "rawHeaders": {
-            "access-control-allow-origin": "*",
-            "connection": "close",
-            "content-length": "39",
-            "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 10:55:47 GMT",
-            "vary": "Accept-Encoding"
-        },
-        "responseIsBinary": false
-    },
-    {
-        "scope": "https://mainnet.infura.io:443",
-        "method": "POST",
-        "path": "/v3/REDACTED",
-        "body": {
             "method": "eth_call",
             "params": [
                 {
@@ -50,11 +25,36 @@
             "connection": "close",
             "content-length": "230",
             "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 10:55:47 GMT",
+            "date": "Wed, 07 Oct 2026 11:18:56 GMT",
             "vary": "Origin",
-            "x-info-build": "3.72.0 (2026-10-07T10:27:15Z)",
-            "x-info-node": "(9514fc6f-9d0e-4451-9b69-101a99e4d81f - blb-v2-ethereum-mainnet-778dd5f6cf-qxm7g)",
-            "x-trace-id": "16ded40a9aff62be58a79a385e45d8db"
+            "x-info-build": "3.72.0 (2026-09-21T22:45:24Z)",
+            "x-info-node": "(4bcd626c-be36-43ac-9d4a-52590704b278 - blb-v2-ethereum-mainnet-778dd5f6cf-tp82q)",
+            "x-trace-id": "e531be96ba56c5620932e8083324a021"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_chainId",
+            "params": [],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": "0x1"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "39",
+            "content-type": "application/json",
+            "date": "Wed, 07 Oct 2026 11:18:56 GMT",
+            "vary": "Accept-Encoding"
         },
         "responseIsBinary": false
     }
