@@ -12,6 +12,10 @@ function stripId(jsonString: string): string {
   }
 }
 
+function stripApiKey(path: string): string {
+  return path.replace(/\/v3\/[^/?]+/, "/v3/REDACTED");
+}
+
 function responseByteLength(response: string): string {
   return String(Buffer.byteLength(JSON.stringify(response)));
 }
@@ -21,12 +25,16 @@ function sanitizeScope(scope: any) {
   if (scope.response && scope.rawHeaders) {
     scope.rawHeaders["content-length"] = responseByteLength(scope.response);
   }
+  if (scope.path) {
+    scope.path = stripApiKey(scope.path);
+  }
   return scope;
 }
 
 const defaultOptions = {
   before: (scope: any) => {
     scope.filteringRequestBody = (body: string) => stripId(body);
+    scope.filteringPath = (path: string) => stripApiKey(path);
     if (scope.rawHeaders) {
       scope.rawHeaders["content-length"] = responseByteLength(scope.response);
     }

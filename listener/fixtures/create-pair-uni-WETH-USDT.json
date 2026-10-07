@@ -25,11 +25,11 @@
             "connection": "close",
             "content-length": "230",
             "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 11:19:02 GMT",
+            "date": "Wed, 07 Oct 2026 11:18:54 GMT",
             "vary": "Origin",
-            "x-info-build": "3.72.0 (2026-09-21T22:45:24Z)",
-            "x-info-node": "(4bcd626c-be36-43ac-9d4a-52590704b278 - blb-v2-ethereum-mainnet-778dd5f6cf-tp82q)",
-            "x-trace-id": "48011bf2d930bb4d5063e7ac05c83a82"
+            "x-info-build": "3.72.0 (2026-09-21T00:11:25Z)",
+            "x-info-node": "(bd8913fe-fc28-4709-91a8-6f96d315a816 - blb-v2-ethereum-mainnet-778dd5f6cf-cjmtg)",
+            "x-trace-id": "1a177d2764cbcba065ab6fe0bfcc8bc4"
         },
         "responseIsBinary": false
     },
@@ -53,7 +53,7 @@
             "connection": "close",
             "content-length": "39",
             "content-type": "application/json",
-            "date": "Wed, 07 Oct 2026 11:19:02 GMT",
+            "date": "Wed, 07 Oct 2026 11:18:54 GMT",
             "vary": "Accept-Encoding"
         },
         "responseIsBinary": false
