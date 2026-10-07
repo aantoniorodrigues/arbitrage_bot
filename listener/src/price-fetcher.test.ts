@@ -4,8 +4,6 @@ import { createPair, getMidPrice, getExecutionPrice } from "./price-fetcher";
 import { ethers } from "ethers";
 import { Uniswap } from "./dexs/uniswap/uniswap";
 import { Sushiswap } from "./dexs/sushiswap/sushiswap";
-
-import nock from "nock";
 import { withFixture } from "./services/vcr";
 
 let USDT: Token;
@@ -122,14 +120,14 @@ describe("getMidPrice", () => {
   it("should return WETH token price in USDT on Uniswap", async () => {
     await withFixture("mid-price-uni-WETH-USDC.json", async () => {
       const midPrice = await getMidPrice(WETH, USDT, provider, new Uniswap());
-      expect(midPrice).toBe(1654.13);
+      expect(midPrice).toBe(2585.15);
     });
   });
 
   it("should return WETH token price in USDT on Sushiswap", async () => {
     await withFixture("mid-price-sushi-WETH-USDC.json", async () => {
       const midPrice = await getMidPrice(WETH, USDT, provider, new Sushiswap());
-      expect(midPrice).toBe(1653.75);
+      expect(midPrice).toBe(2585.32);
     });
   });
 });
@@ -145,7 +143,7 @@ describe("getExecutionPrice", () => {
         new Uniswap(),
       );
 
-      expect(executionPrice).toBe(1648.78);
+      expect(executionPrice).toBe(2576.5);
     });
   });
 
@@ -159,7 +157,7 @@ describe("getExecutionPrice", () => {
         new Sushiswap(),
       );
 
-      expect(executionPrice).toBe(1638.19);
+      expect(executionPrice).toBe(2556.81);
     });
   });
 });

@@ -2,7 +2,7 @@
     {
         "scope": "https://mainnet.infura.io:443",
         "method": "POST",
-        "path": "/v3/bfbb56539cf443dfbfd479d0bc390eaf",
+        "path": "/v3/REDACTED",
         "body": {
             "method": "eth_chainId",
             "params": [],
@@ -19,7 +19,7 @@
             "connection": "close",
             "content-length": "39",
             "content-type": "application/json",
-            "date": "Thu, 25 Jun 2026 09:02:09 GMT",
+            "date": "Wed, 07 Oct 2026 10:28:28 GMT",
             "vary": "Accept-Encoding"
         },
         "responseIsBinary": false
@@ -27,7 +27,7 @@
     {
         "scope": "https://mainnet.infura.io:443",
         "method": "POST",
-        "path": "/v3/bfbb56539cf443dfbfd479d0bc390eaf",
+        "path": "/v3/REDACTED",
         "body": {
             "method": "eth_call",
             "params": [
@@ -43,18 +43,18 @@
         "response": {
             "jsonrpc": "2.0",
             "id": 2,
-            "result": "0x0000000000000000000000000000000000000000000000085a6b5441649f10400000000000000000000000000000000000000000000000000000003b54bb34e8000000000000000000000000000000000000000000000000000000006a3cdbdf"
+            "result": "0x000000000000000000000000000000000000000000000006a8ba51b0cede4c2900000000000000000000000000000000000000000000000000000049f1162a8b000000000000000000000000000000000000000000000000000000006ac619f3"
         },
         "rawHeaders": {
             "access-control-allow-origin": "*",
             "connection": "close",
             "content-length": "230",
             "content-type": "application/json",
-            "date": "Thu, 25 Jun 2026 09:02:09 GMT",
+            "date": "Wed, 07 Oct 2026 10:28:28 GMT",
             "vary": "Origin",
-            "x-info-build": "3.60.1 (2026-06-24T12:06:50Z)",
-            "x-info-node": "(9ca3b134-3f3c-4339-a812-a5cb60353e0c - blb-v2-ethereum-mainnet-7d6d8879bb-zqlld)",
-            "x-trace-id": "b6140951be79a8c94d9d88f4b13595ef"
+            "x-info-build": "3.72.0 (2026-10-07T10:27:15Z)",
+            "x-info-node": "(9514fc6f-9d0e-4451-9b69-101a99e4d81f - blb-v2-ethereum-mainnet-778dd5f6cf-qxm7g)",
+            "x-trace-id": "b2934e2c747ed1747ecc0d0b600de3ff"
         },
         "responseIsBinary": false
     }
