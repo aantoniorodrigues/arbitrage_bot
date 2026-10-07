@@ -44,75 +44,85 @@ beforeEach(() => {
 
 describe("createPair", () => {
   it("should return a valid pair from Uniswap", async () => {
-    const pair = await createPair(WETH, USDT, provider, new Uniswap());
-
-    expect(pair).toBeDefined();
+    await withFixture("create-pair-uni-WETH-USDT.json", async () => {
+      const pair = await createPair(WETH, USDT, provider, new Uniswap());
+      expect(pair).toBeDefined();
+    });
   });
 
   it("should return a valid pair from Sushiswap", async () => {
-    const pair = await createPair(WETH, USDT, provider, new Sushiswap());
-
-    expect(pair).toBeDefined();
+    await withFixture("create-pair-sushi-WETH-USDT.json", async () => {
+      const pair = await createPair(WETH, USDT, provider, new Sushiswap());
+      expect(pair).toBeDefined();
+    });
   });
 
   it("should create WETH/USDT pair with the correct pair info from Uniswap", async () => {
-    const pair = await createPair(WETH, USDT, provider, new Uniswap());
-    const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
+    await withFixture("create-pair-uni-WETH-USDT.json", async () => {
+      const pair = await createPair(WETH, USDT, provider, new Uniswap());
+      const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
-    const token0 = tokenAmount0["currency"];
-    const token1 = tokenAmount1["currency"];
+      const token0 = tokenAmount0["currency"];
+      const token1 = tokenAmount1["currency"];
 
-    expect(token0["symbol"]).toBe("WETH");
-    expect(token0["decimals"]).toBe(18);
-    expect(token0["address"]).toBe(TOKENS.WETH.mainnet);
-    expect(token1["symbol"]).toBe("USDT");
-    expect(token1["decimals"]).toBe(6);
-    expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
+      expect(token0["symbol"]).toBe("WETH");
+      expect(token0["decimals"]).toBe(18);
+      expect(token0["address"]).toBe(TOKENS.WETH.mainnet);
+      expect(token1["symbol"]).toBe("USDT");
+      expect(token1["decimals"]).toBe(6);
+      expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
+    });
   });
 
   it("should create WETH/USDT pair with the correct pair info from Sushiswap", async () => {
-    const pair = await createPair(WETH, USDT, provider, new Sushiswap());
-    const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
+    await withFixture("create-pair-sushi-WETH-USDT.json", async () => {
+      const pair = await createPair(WETH, USDT, provider, new Sushiswap());
+      const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
-    const token0 = tokenAmount0["currency"];
-    const token1 = tokenAmount1["currency"];
+      const token0 = tokenAmount0["currency"];
+      const token1 = tokenAmount1["currency"];
 
-    expect(token0["symbol"]).toBe("WETH");
-    expect(token0["decimals"]).toBe(18);
-    expect(token0["address"]).toBe(TOKENS.WETH.mainnet);
-    expect(token1["symbol"]).toBe("USDT");
-    expect(token1["decimals"]).toBe(6);
-    expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
+      expect(token0["symbol"]).toBe("WETH");
+      expect(token0["decimals"]).toBe(18);
+      expect(token0["address"]).toBe(TOKENS.WETH.mainnet);
+      expect(token1["symbol"]).toBe("USDT");
+      expect(token1["decimals"]).toBe(6);
+      expect(token1["address"]).toBe(TOKENS.USDT.mainnet);
+    });
   });
 
   it("should create WETH/BNB pair with the correct pair info from Uniswap", async () => {
-    const pair = await createPair(WETH, BNB, provider, new Uniswap());
-    const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
+    await withFixture("create-pair-uni-WETH-BNB.json", async () => {
+      const pair = await createPair(WETH, BNB, provider, new Uniswap());
+      const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
-    const token0 = tokenAmount0["currency"];
-    const token1 = tokenAmount1["currency"];
+      const token0 = tokenAmount0["currency"];
+      const token1 = tokenAmount1["currency"];
 
-    expect(token0["symbol"]).toBe("BNB");
-    expect(token0["decimals"]).toBe(18);
-    expect(token0["address"]).toBe(TOKENS.BNB.mainnet);
-    expect(token1["symbol"]).toBe("WETH");
-    expect(token1["decimals"]).toBe(18);
-    expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
+      expect(token0["symbol"]).toBe("BNB");
+      expect(token0["decimals"]).toBe(18);
+      expect(token0["address"]).toBe(TOKENS.BNB.mainnet);
+      expect(token1["symbol"]).toBe("WETH");
+      expect(token1["decimals"]).toBe(18);
+      expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
+    });
   });
 
   it("should create WETH/BNB pair with the correct pair info from Sushiswap", async () => {
-    const pair = await createPair(WETH, BNB, provider, new Sushiswap());
-    const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
+    await withFixture("create-pair-sushi-WETH-BNB.json", async () => {
+      const pair = await createPair(WETH, BNB, provider, new Sushiswap());
+      const [tokenAmount0, tokenAmount1] = pair["tokenAmounts"];
 
-    const token0 = tokenAmount0["currency"];
-    const token1 = tokenAmount1["currency"];
+      const token0 = tokenAmount0["currency"];
+      const token1 = tokenAmount1["currency"];
 
-    expect(token0["symbol"]).toBe("BNB");
-    expect(token0["decimals"]).toBe(18);
-    expect(token0["address"]).toBe(TOKENS.BNB.mainnet);
-    expect(token1["symbol"]).toBe("WETH");
-    expect(token1["decimals"]).toBe(18);
-    expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
+      expect(token0["symbol"]).toBe("BNB");
+      expect(token0["decimals"]).toBe(18);
+      expect(token0["address"]).toBe(TOKENS.BNB.mainnet);
+      expect(token1["symbol"]).toBe("WETH");
+      expect(token1["decimals"]).toBe(18);
+      expect(token1["address"]).toBe(TOKENS.WETH.mainnet);
+    });
   });
 });
 

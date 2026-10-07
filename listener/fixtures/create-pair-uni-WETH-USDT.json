@@ -1,0 +1,61 @@
+[
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_chainId",
+            "params": [],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": "0x1"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "39",
+            "content-type": "application/json",
+            "date": "Wed, 07 Oct 2026 10:55:45 GMT",
+            "vary": "Accept-Encoding"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "result": "0x00000000000000000000000000000000000000000000009b7c0149c5569cad2d000000000000000000000000000000000000000000000000000006bd268c240a000000000000000000000000000000000000000000000000000000006ac62503"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Wed, 07 Oct 2026 10:55:45 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.72.0 (2026-09-21T00:11:25Z)",
+            "x-info-node": "(bd8913fe-fc28-4709-91a8-6f96d315a816 - blb-v2-ethereum-mainnet-778dd5f6cf-cjmtg)",
+            "x-trace-id": "fc528339b205d2fa5efde03feabf6f77"
+        },
+        "responseIsBinary": false
+    }
+]
