@@ -1,7 +1,7 @@
 import { Token, CurrencyAmount, TradeType } from "@uniswap/sdk-core";
 import { Pair, Route, Trade } from "@uniswap/v2-sdk";
 import { ethers } from "ethers";
-import { Dex } from "./interfaces/types";
+import { Dex } from "../interfaces/types";
 
 export async function createPair(
   token0: Token,
@@ -13,20 +13,15 @@ export async function createPair(
   const pairContract = new ethers.Contract(pairAddress, dex.abi, provider);
 
   const reserves = await pairContract["getReserves"]();
-  const [reserve0, reserve1] = reserves;
 
   const tokens = [token0, token1];
   const tokensSorted = tokens[0].sortsBefore(tokens[1])
     ? tokens
     : [tokens[1], tokens[0]];
 
-  const reservesSorted = token0.sortsBefore(token1)
-    ? reserves
-    : [reserve1, reserve0];
-
   const pair = new Pair(
-    CurrencyAmount.fromRawAmount(tokensSorted[0], reservesSorted[0].toString()),
-    CurrencyAmount.fromRawAmount(tokensSorted[1], reservesSorted[1].toString()),
+    CurrencyAmount.fromRawAmount(tokensSorted[0], reserves[0].toString()),
+    CurrencyAmount.fromRawAmount(tokensSorted[1], reserves[1].toString()),
   );
 
   return pair;
