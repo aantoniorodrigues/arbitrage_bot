@@ -4,17 +4,17 @@ import { ethers } from "ethers";
 import { Dex } from "../interfaces/types";
 
 export async function createPair(
-  token0: Token,
-  token1: Token,
+  baseToken: Token,
+  quoteToken: Token,
   provider: ethers.JsonRpcProvider,
   dex: Dex,
 ): Promise<Pair> {
-  const pairAddress = getPairAddress(token0, token1, dex);
+  const pairAddress = getPairAddress(baseToken, quoteToken, dex);
   const pairContract = new ethers.Contract(pairAddress, dex.abi, provider);
 
   const reserves = await pairContract["getReserves"]();
 
-  const tokens = [token0, token1];
+  const tokens = [baseToken, quoteToken];
   const tokensSorted = tokens[0].sortsBefore(tokens[1])
     ? tokens
     : [tokens[1], tokens[0]];
@@ -28,31 +28,31 @@ export async function createPair(
 }
 
 export async function getMidPrice(
-  inputToken: Token,
-  outputToken: Token,
+  baseToken: Token,
+  quoteToken: Token,
   provider: ethers.JsonRpcProvider,
   dex: Dex,
 ): Promise<number> {
-  const pair = await createPair(inputToken, outputToken, provider, dex);
-  const route = new Route([pair], inputToken, outputToken);
+  const pair = await createPair(baseToken, quoteToken, provider, dex);
+  const route = new Route([pair], baseToken, quoteToken);
 
   return Number(route.midPrice.toSignificant(6));
 }
 
 export async function getExecutionPrice(
-  inputToken: Token,
-  outputToken: Token,
+  baseToken: Token,
+  quoteToken: Token,
   provider: ethers.JsonRpcProvider,
-  inputTokenAmount: number,
+  baseTokenAmount: number,
   dex: Dex,
 ): Promise<number> {
-  const pair = await createPair(inputToken, outputToken, provider, dex);
-  const route = new Route([pair], inputToken, outputToken);
-  const amountWithDecimals = inputTokenAmount * 10 ** inputToken.decimals;
+  const pair = await createPair(baseToken, quoteToken, provider, dex);
+  const route = new Route([pair], baseToken, quoteToken);
+  const amountWithDecimals = baseTokenAmount * 10 ** baseToken.decimals;
 
   const trade = new Trade(
     route,
-    CurrencyAmount.fromRawAmount(inputToken, amountWithDecimals),
+    CurrencyAmount.fromRawAmount(baseToken, amountWithDecimals),
     TradeType.EXACT_INPUT,
   );
 
