@@ -82,7 +82,6 @@ describe("collectArbitrageRoutes", () => {
       expect(firstRoute.quoteAmountExpected).toBe(2503.06);
       expect(firstRoute.baseAmountOut).toBe(0.98687646008);
 
-      
       expect(secondRoute.firstTradeDex.name).toBe("Sushiswap");
       expect(secondRoute.secondTradeDex.name).toBe("Uniswap");
       expect(secondRoute.baseAmountIn).toBe(1);

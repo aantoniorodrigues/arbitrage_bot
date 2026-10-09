@@ -41,4 +41,4 @@ export interface NoOpportunity {
   timestamp: number;
 }
 
-export type TradeInfo = ArbitrageOpportunity | NoOpportunity
+export type TradeInfo = ArbitrageOpportunity | NoOpportunity;
