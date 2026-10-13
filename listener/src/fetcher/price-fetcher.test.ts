@@ -1,10 +1,10 @@
-import { TOKENS } from "./constants";
+import { TOKENS } from "../constants";
 import { ChainId, Token } from "@uniswap/sdk-core";
 import { createPair, getMidPrice, getExecutionPrice } from "./price-fetcher";
 import { ethers } from "ethers";
-import { Uniswap } from "./dexs/uniswap/uniswap";
-import { Sushiswap } from "./dexs/sushiswap/sushiswap";
-import { withFixture } from "./services/vcr";
+import { Uniswap } from "../dexs/uniswap/uniswap";
+import { Sushiswap } from "../dexs/sushiswap/sushiswap";
+import { withFixture } from "../services/vcr";
 
 let USDT: Token;
 let WETH: Token;

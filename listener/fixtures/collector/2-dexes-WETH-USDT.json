@@ -1,0 +1,188 @@
+[
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x06da0fd433c1a5d7a4faa01111c044910a184553",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 3,
+            "result": "0x000000000000000000000000000000000000000000000006c2cfc11805ff54e500000000000000000000000000000000000000000000000000000048d952bd22000000000000000000000000000000000000000000000000000000006ac8d8a7"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:28 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.72.0 (2026-10-09T05:33:29Z)",
+            "x-info-node": "(c9d32577-4ab2-4dc2-afee-dc009b17bfe3 - blb-v2-ethereum-mainnet-778dd5f6cf-mkndw)",
+            "x-trace-id": "0888752e197123b791a9e722eb8f12e6"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_chainId",
+            "params": [],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": "0x1"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "39",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:28 GMT",
+            "vary": "Accept-Encoding"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "result": "0x00000000000000000000000000000000000000000000009db843fd9c7945c59a000000000000000000000000000000000000000000000000000006a54258b18e000000000000000000000000000000000000000000000000000000006ac8d973"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:28 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.72.0 (2026-10-09T05:34:29Z)",
+            "x-info-node": "(45ad0dfc-83fd-4cbe-a250-65ab15f17d83 - blb-v2-ethereum-mainnet-778dd5f6cf-xxln4)",
+            "x-trace-id": "0d37eb958b3094911907503585506836"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x06da0fd433c1a5d7a4faa01111c044910a184553",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 4,
+            "result": "0x000000000000000000000000000000000000000000000006c2cfc11805ff54e500000000000000000000000000000000000000000000000000000048d952bd22000000000000000000000000000000000000000000000000000000006ac8d8a7"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:29 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.72.0 (2026-10-09T05:34:29Z)",
+            "x-info-node": "(45ad0dfc-83fd-4cbe-a250-65ab15f17d83 - blb-v2-ethereum-mainnet-778dd5f6cf-xxln4)",
+            "x-trace-id": "cfcc27ede623bcf522dcfdda7de68768"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_chainId",
+            "params": [],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 5,
+            "result": "0x1"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "39",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:29 GMT",
+            "vary": "Accept-Encoding"
+        },
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://mainnet.infura.io:443",
+        "method": "POST",
+        "path": "/v3/REDACTED",
+        "body": {
+            "method": "eth_call",
+            "params": [
+                {
+                    "to": "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852",
+                    "data": "0x0902f1ac"
+                },
+                "latest"
+            ],
+            "jsonrpc": "2.0"
+        },
+        "status": 200,
+        "response": {
+            "jsonrpc": "2.0",
+            "id": 6,
+            "result": "0x00000000000000000000000000000000000000000000009db843fd9c7945c59a000000000000000000000000000000000000000000000000000006a54258b18e000000000000000000000000000000000000000000000000000000006ac8d973"
+        },
+        "rawHeaders": {
+            "access-control-allow-origin": "*",
+            "connection": "close",
+            "content-length": "230",
+            "content-type": "application/json",
+            "date": "Fri, 09 Oct 2026 12:11:29 GMT",
+            "vary": "Origin",
+            "x-info-build": "3.72.0 (2026-10-08T21:47:39Z)",
+            "x-info-node": "(6ddb5d2d-446b-48f2-80eb-ad419bc2721d - blb-v2-ethereum-mainnet-778dd5f6cf-8pqqn)",
+            "x-trace-id": "e07c2dda7d592b31e0b4e548d461708a"
+        },
+        "responseIsBinary": false
+    }
+]
