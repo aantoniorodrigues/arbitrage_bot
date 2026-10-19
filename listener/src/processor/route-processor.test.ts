@@ -158,4 +158,22 @@ describe("processArbitrageRoutes", () => {
     expect(arbitrageTradeInfo.baseAmountOutExpected).toBe(1.051);
     expect(arbitrageTradeInfo.type).toBe("ARBITRAGE");
   });
+
+  it("should compute a negative profit percentage on a losing route", () => {
+    const routes: ArbitrageRoute[] = [
+      {
+        firstTradeDex,
+        secondTradeDex,
+        baseAmountIn: tradePair.amount,
+        quoteAmountExpected: 1000,
+        baseAmountOut: 0.95,
+      },
+    ];
+
+    const [losingTradeInfo] = processArbitrageRoutes(tradePair, routes);
+
+    expect(losingTradeInfo.type).toBe("NO_OPPORTUNITY");
+    expect(losingTradeInfo.profitPct).toBeLessThan(0);
+    expect(losingTradeInfo.profitPct).toBeCloseTo(-0.05);
+  });
 });
