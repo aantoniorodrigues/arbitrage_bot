@@ -10,6 +10,12 @@ import { Uniswap } from "../dexs/uniswap/uniswap";
 import { Sushiswap } from "../dexs/sushiswap/sushiswap";
 import { processArbitrageRoutes } from "./route-processor";
 
+// Pin the threshold so these tests don't depend on .env or constants.ts
+jest.mock("../constants", () => ({
+  ...jest.requireActual("../constants"),
+  MIN_PROFIT_PCT: 0.03,
+}));
+
 let USDT: Token;
 let WETH: Token;
 let tradePair: TradePair;
