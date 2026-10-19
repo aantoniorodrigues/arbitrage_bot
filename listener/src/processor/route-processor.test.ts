@@ -125,54 +125,37 @@ describe("processArbitrageRoutes", () => {
   });
 
   it("should compute the correct profits", () => {
-    const noOppBaseAmountOut = 0.989;
-    const arbitrageBaseAmountOut = 1.051;
-
     const routes: ArbitrageRoute[] = [
       {
         firstTradeDex,
         secondTradeDex,
         baseAmountIn: tradePair.amount,
         quoteAmountExpected: 1000,
-        baseAmountOut: noOppBaseAmountOut,
+        baseAmountOut: 0.989,
       },
       {
         firstTradeDex: secondTradeDex,
         secondTradeDex: firstTradeDex,
         baseAmountIn: tradePair.amount,
         quoteAmountExpected: 1000,
-        baseAmountOut: arbitrageBaseAmountOut,
+        baseAmountOut: 1.051,
       },
     ];
-
-    const expectedNoOppProfit = noOppBaseAmountOut - tradePair.amount;
-    const expectedNoOppProfitPct = (
-      expectedNoOppProfit / tradePair.amount
-    ).toFixed(3);
-
-    const expectedArbitrageProfit = arbitrageBaseAmountOut - tradePair.amount;
-    const expectedArbitrageProfitPct = (
-      expectedArbitrageProfit / tradePair.amount
-    ).toFixed(3);
 
     const processedRoutes = processArbitrageRoutes(tradePair, routes);
     const noOppTradeInfo = processedRoutes[0];
     const arbitrageTradeInfo = processedRoutes[1] as ArbitrageOpportunity;
 
-    expect(noOppTradeInfo.profitPct).toBe(Number(expectedNoOppProfitPct));
+    expect(noOppTradeInfo.profitPct).toBeCloseTo(-0.011);
     expect(noOppTradeInfo.type).toBe("NO_OPPORTUNITY");
 
-    expect(arbitrageTradeInfo.profit).toBe(Number(expectedArbitrageProfit));
-    expect(arbitrageTradeInfo.profitPct).toBe(
-      Number(expectedArbitrageProfitPct),
-    );
+    expect(arbitrageTradeInfo.profit).toBeCloseTo(0.051);
+    expect(arbitrageTradeInfo.profitPct).toBeCloseTo(0.051);
     expect(arbitrageTradeInfo.firstTradeDex.name).toBe("Sushiswap");
     expect(arbitrageTradeInfo.secondTradeDex.name).toBe("Uniswap");
     expect(arbitrageTradeInfo.baseAmountIn).toBe(1);
     expect(arbitrageTradeInfo.quoteAmountExpected).toBe(1000);
-    expect(arbitrageTradeInfo.baseAmountOutExpected).toBe(
-      arbitrageBaseAmountOut,
-    );
+    expect(arbitrageTradeInfo.baseAmountOutExpected).toBe(1.051);
     expect(arbitrageTradeInfo.type).toBe("ARBITRAGE");
   });
 });
