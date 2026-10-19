@@ -148,6 +148,7 @@ describe("processArbitrageRoutes", () => {
 
     expect(noOppTradeInfo.profitPct).toBeCloseTo(-0.011);
     expect(noOppTradeInfo.type).toBe("NO_OPPORTUNITY");
+    expect(noOppTradeInfo.pair).toBe(tradePair);
 
     expect(arbitrageTradeInfo.profit).toBeCloseTo(0.051);
     expect(arbitrageTradeInfo.profitPct).toBeCloseTo(0.051);
@@ -157,6 +158,7 @@ describe("processArbitrageRoutes", () => {
     expect(arbitrageTradeInfo.quoteAmountExpected).toBe(1000);
     expect(arbitrageTradeInfo.baseAmountOutExpected).toBe(1.051);
     expect(arbitrageTradeInfo.type).toBe("ARBITRAGE");
+    expect(arbitrageTradeInfo.pair).toBe(tradePair);
   });
 
   it("should compute a negative profit percentage on a losing route", () => {
