@@ -174,4 +174,18 @@ describe("getExecutionPrice", () => {
       expect(executionPrice).toBe(2555.81);
     });
   });
+
+  it("should return execution price when passed a fractional amount", async () => {
+    await withFixture("execution-price-fractional-amount.json", async () => {
+      const executionPrice = await getExecutionPrice(
+        WETH,
+        USDT,
+        provider,
+        0.0092,
+        new Uniswap(),
+      );
+
+      expect(executionPrice).toBe(2431.6);
+    });
+  });
 });

@@ -37,7 +37,7 @@ export interface ArbitrageOpportunity {
 export interface NoOpportunity {
   type: "NO_OPPORTUNITY";
   pair: TradePair;
-  bestProfitPct: number;
+  profitPct: number;
   timestamp: number;
 }
 

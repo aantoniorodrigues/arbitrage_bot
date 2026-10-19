@@ -40,3 +40,5 @@ export const TOKENS = {
 };
 
 export const POLLING_INTERVAL = 1000; // 1 second
+
+export const MIN_PROFIT_PCT = Number(process.env.MIN_PROFIT_PCT) || 0.03; // 3%
