@@ -48,7 +48,9 @@ export async function getExecutionPrice(
 ): Promise<number> {
   const pair = await createPair(baseToken, quoteToken, provider, dex);
   const route = new Route([pair], baseToken, quoteToken);
-  const amountWithDecimals = baseTokenAmount * 10 ** baseToken.decimals;
+  const amountWithDecimals = Math.floor(
+    baseTokenAmount * 10 ** baseToken.decimals,
+  );
 
   const trade = new Trade(
     route,
