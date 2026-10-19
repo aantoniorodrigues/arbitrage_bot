@@ -47,7 +47,6 @@ beforeEach(() => {
 });
 
 describe("processArbitrageRoutes", () => {
-
   it("should return no trades on an empty routes array", () => {
     const processedRoutes = processArbitrageRoutes(tradePair, []);
     expect(processedRoutes.length).toBe(0);
